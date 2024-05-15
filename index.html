@@ -71,6 +71,8 @@
             background-color: #b59c6a; /* Darker gold */
         }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -101,15 +103,25 @@
 </div>
 </div>
 <script>
-        document.getElementById('nameForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const title = document.getElementById('title').value;
-            const name = document.getElementById('name').value;
-            document.getElementById('guestTitle').textContent = title;
-            document.getElementById('guestName').textContent = name;
-            document.getElementById('nameForm').style.display = 'none';
-            document.getElementById('invitation').style.display = 'block';
-        });
+    document.getElementById('nameForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const name = document.getElementById('name').value;
+        document.getElementById('guestTitle').textContent = title;
+        document.getElementById('guestName').textContent = name;
+        document.getElementById('nameForm').style.display = 'none';
+        document.getElementById('invitation').style.display = 'block';
+
+        // Generate PDF
+        var opt = {
+            margin:       1,
+            filename:     'invitation.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf().from(document.getElementById('invitation')).set(opt).save();
+    });
 </script>
 </body>
 </html>
