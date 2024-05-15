@@ -10,7 +10,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-image: url('https://github.com/Joshua-Shabu/invitation_jOSHUA/blob/main/Dark%20Green%20Elegant%20Muslim%20Nikah%20Invitation.png?raw=true'); /* Replace with your background image URL */
+            background-image: url('https://github.com/yourusername/wedding-invitation/raw/main/background.jpg'); /* Replace with your background image URL */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -34,10 +34,12 @@
             font-family: 'Times New Roman', serif;
             color: #d1ba7e; /* Match the gold color */
             font-size: 24px;
+            margin-top: 20px;
         }
         p {
             color: #d1ba7e; /* Match the gold color */
             font-size: 18px;
+            margin: 10px 0;
         }
         form {
             margin-bottom: 20px;
@@ -68,7 +70,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Our Wedding!</h1>
+        <h1>With the Blessings of Allah,</h1>
+        <p>We are delighted to invite you to the wedding ceremony of</p>
+        <h2>ABC</h2>
+        <p>and</p>
+        <h2>DEF</h2>
+        <p>on 12th January 2025 at 12 PM</p>
+        <p>at 123 Anywhere St., Any City, ST 12345</p>
+        <p>We look forward to celebrating with you!</p>
+        
         <form id="nameForm">
             <label for="title">Please select your title:</label>
             <select id="title" name="title" required>
@@ -80,11 +90,13 @@
             <input type="text" id="name" name="name" required>
             <button type="submit">Submit</button>
         </form>
+        
         <div id="invitation" style="display:none;">
             <h2>Hi <span id="guestTitle"></span> <span id="guestName"></span></h2>
             <p>We are excited to invite you to our wedding celebration!</p>
         </div>
     </div>
+    
     <script>
         document.getElementById('nameForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -98,4 +110,3 @@
     </script>
 </body>
 </html>
-
