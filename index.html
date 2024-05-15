@@ -1,63 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+ 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Playfair Display', serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://github.com/yourusername/wedding-invitation/raw/main/background.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d1ba7e; /* Match the gold color from the invitation */
         }
         .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black to make text readable */
+            padding: 20px;
             max-width: 600px;
             margin: auto;
+            margin-top: 50px;
+            border-radius: 10px;
         }
-    </style>
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            color: #d1ba7e; /* Match the gold color */
+            margin-bottom: 20px;
+        }
+        .invitation-text {
+            font-family: 'Playfair Display', serif;
+            color: #d1ba7e; /* Match the gold color */
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .names {
+            font-family: 'Playfair Display', serif;
+            color: #d1ba7e; /* Match the gold color */
+            font-size: 30px;
+            margin: 20px 0;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        label {
+            color: #d1ba7e; /* Match the gold color */
+        }
+        input[type="text"], select {
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d1ba7e; /* Match the gold color */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b59c6a; /* Darker gold */
+        }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Our Wedding!</h1>
-        <form id="nameForm">
-            <label for="name">Please enter your name:</label>
-            <input type="text" id="name" name="name" required>
-            <button type="submit">Submit</button>
-        </form>
-        <div id="invitation" style="display:none;">
-            <h2>Hi Mr./Ms. <span id="guestName"></span></h2>
-            <p>We are excited to invite you to our wedding celebration!</p>
-            <button id="saveBtn">Save as Image</button>
-            <canvas id="canvas" style="display:none;"></canvas>
-        </div>
-    </div>
-    <script>
+<div class="container">
+<div class="title">With the Blessings of Allah,</div>
+<div class="invitation-text">We are delighted to invite you to the wedding ceremony of</div>
+<div class="names">ABC</div>
+<div class="invitation-text">and</div>
+<div class="names">DEF</div>
+<div class="invitation-text">on 12th January 2025 at 12 PM</div>
+<div class="invitation-text">at 123 Anywhere St., Any City, ST 12345</div>
+<div class="invitation-text">We look forward to celebrating with you!</div>
+<div class="form-container">
+<form id="nameForm">
+<label for="title">Please select your title:</label>
+<select id="title" name="title" required>
+<option value="Mr.">Mr.</option>
+<option value="Ms.">Ms.</option>
+</select>
+<br>
+<label for="name">Please enter your name:</label>
+<input type="text" id="name" name="name" required>
+<button type="submit">Submit</button>
+</form>
+<div id="invitation" style="display:none;">
+<div class="invitation-text">Hi <span id="guestTitle"></span> <span id="guestName"></span></div>
+<div class="invitation-text">We are excited to invite you to our wedding celebration!</div>
+</div>
+</div>
+</div>
+<script>
         document.getElementById('nameForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            const title = document.getElementById('title').value;
             const name = document.getElementById('name').value;
+            document.getElementById('guestTitle').textContent = title;
             document.getElementById('guestName').textContent = name;
             document.getElementById('nameForm').style.display = 'none';
             document.getElementById('invitation').style.display = 'block';
         });
-
-        document.getElementById('saveBtn').addEventListener('click', function() {
-            const container = document.querySelector('.container');
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            const width = container.offsetWidth;
-            const height = container.offsetHeight;
-
-            canvas.width = width;
-            canvas.height = height;
-
-            html2canvas(container).then(function (canvas) {
-                var a = document.createElement('a');
-                a.href = canvas.toDataURL('image/png');
-                a.download = 'wedding_invitation.png';
-                a.click();
-            });
-        });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</script>
 </body>
 </html>
