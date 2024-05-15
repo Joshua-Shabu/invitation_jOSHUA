@@ -6,13 +6,63 @@
     <title>Wedding Invitation</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://github.com/Joshua-Shabu/invitation_jOSHUA/blob/main/Dark%20Green%20Elegant%20Muslim%20Nikah%20Invitation.png?raw=true'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d1ba7e; /* Match the gold color from the invitation */
         }
         .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black to make text readable */
+            padding: 20px;
             max-width: 600px;
             margin: auto;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-family: 'Times New Roman', serif;
+            color: #d1ba7e; /* Match the gold color */
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-family: 'Times New Roman', serif;
+            color: #d1ba7e; /* Match the gold color */
+            font-size: 24px;
+        }
+        p {
+            color: #d1ba7e; /* Match the gold color */
+            font-size: 18px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            color: #d1ba7e; /* Match the gold color */
+        }
+        input[type="text"], select {
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d1ba7e; /* Match the gold color */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b59c6a; /* Darker gold */
         }
     </style>
 </head>
@@ -20,19 +70,27 @@
     <div class="container">
         <h1>Welcome to Our Wedding!</h1>
         <form id="nameForm">
+            <label for="title">Please select your title:</label>
+            <select id="title" name="title" required>
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+            </select>
+            <br>
             <label for="name">Please enter your name:</label>
             <input type="text" id="name" name="name" required>
             <button type="submit">Submit</button>
         </form>
         <div id="invitation" style="display:none;">
-            <h2>Hi Mr./Ms. <span id="guestName"></span></h2>
+            <h2>Hi <span id="guestTitle"></span> <span id="guestName"></span></h2>
             <p>We are excited to invite you to our wedding celebration!</p>
         </div>
     </div>
     <script>
         document.getElementById('nameForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            const title = document.getElementById('title').value;
             const name = document.getElementById('name').value;
+            document.getElementById('guestTitle').textContent = title;
             document.getElementById('guestName').textContent = name;
             document.getElementById('nameForm').style.display = 'none';
             document.getElementById('invitation').style.display = 'block';
@@ -40,3 +98,4 @@
     </script>
 </body>
 </html>
+
