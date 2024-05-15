@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Wedding!</h1>
+        <form id="nameForm">
+            <label for="name">Please enter your name:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="invitation" style="display:none;">
+            <h2>Hi Mr./Ms. <span id="guestName"></span></h2>
+            <p>We are excited to invite you to our wedding celebration!</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            document.getElementById('guestName').textContent = name;
+            document.getElementById('nameForm').style.display = 'none';
+            document.getElementById('invitation').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
